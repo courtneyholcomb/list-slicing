@@ -30,8 +30,13 @@ def custom_len(input_list):
         8
 
     """
-
-    return 0
+    # create counter
+    # for each item in list, add one to counter
+    #return counter
+    counter = 0
+    for i in input_list:
+        counter += 1
+    return counter
 
 
 # For the next four exercises, you'll need to be clever and think about ways
@@ -58,8 +63,16 @@ def custom_append(input_list, value):
         True
 
     """
+    # Call custom_len function for input_list
+    # add 1 to the result of the custom_len function
+    # assign value to the index of the previous step
 
-    pass
+    # save value of input_list[-1]
+    # input_list[-1] = [value]
+    # value_index = custom_len(input_list) + 1
+    # input_list[value_index] = value
+    input_list = input_list + list([value])
+    custom_append()
 
 
 def custom_extend(input_list, second_list):
