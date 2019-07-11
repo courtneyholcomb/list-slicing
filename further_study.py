@@ -71,8 +71,8 @@ def custom_append(input_list, value):
     # input_list[-1] = [value]
     # value_index = custom_len(input_list) + 1
     # input_list[value_index] = value
-    input_list = input_list + list([value])
-    custom_append()
+    input_list += [value]
+
 
 
 def custom_extend(input_list, second_list):
@@ -90,8 +90,7 @@ def custom_extend(input_list, second_list):
         True
 
     """
-
-    pass
+    input_list += second_list
 
 
 def custom_insert(input_list, index, value):
@@ -109,7 +108,8 @@ def custom_insert(input_list, index, value):
 
     """
 
-    pass
+    input_list[index:] = [value] + input_list[index:]
+
 
 
 def custom_remove(input_list, value):
@@ -127,8 +127,17 @@ def custom_remove(input_list, value):
         True
 
     """
+    # make a counter
+    # iterate thru input_list, add one to counter for each item
+    # if item = value, break
+    counter = 0
+    for i in input_list:
+        if i == value:
+            break
+        counter += 1
+    new_list = input_list[:counter] + input_list[counter+1:]
+    input_list = new_list
 
-    pass
 
 
 def custom_pop(input_list):
@@ -237,7 +246,6 @@ def custom_equality(some_list, another_list):
 
     """
 
-    return None
 
 
 ##############################################################################
