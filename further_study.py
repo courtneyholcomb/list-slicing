@@ -108,10 +108,11 @@ def custom_insert(input_list, index, value):
 
     """
 
-    input_list[index:] = [value] + input_list[index:]
+    #input_list[index:] = [value] + input_list[index:]
+    input_list[index:index] = [value]
 
 
-
+# come back to this!
 def custom_remove(input_list, value):
     """Remove the first item of the value in list.
 
@@ -131,12 +132,13 @@ def custom_remove(input_list, value):
     # iterate thru input_list, add one to counter for each item
     # if item = value, break
     counter = 0
-    for i in input_list:
+    for i in input_list[:]:
         if i == value:
             break
         counter += 1
-    new_list = input_list[:counter] + input_list[counter+1:]
-    input_list = new_list
+    # new_list = input_list[:counter] + input_list[counter+1:]
+    # input_list[:] = new_list
+    input_list[counter:counter+1] = []
 
 
 
@@ -155,8 +157,13 @@ def custom_pop(input_list):
         ['Jan', 'Feb']
 
     """
-
-    return None
+    # save last item to var
+    # slice all except last from list
+    # return last item
+    last_item = input_list[-1]
+    our_list = input_list
+    input_list[:] = our_list[:-1]
+    return last_item
 
 
 def custom_index(input_list, value):
@@ -171,8 +178,12 @@ def custom_index(input_list, value):
         1
 
     """
-
-    return 0
+    counter = 0
+    for i in input_list:
+        if i == value:
+            break
+        counter += 1
+    return counter
 
 
 def custom_count(input_list, value):
@@ -187,8 +198,11 @@ def custom_count(input_list, value):
         2
 
     """
-
-    return 0
+    counter = 0
+    for i in input_list:
+        if i == value:
+            counter += 1
+    return counter
 
 
 def custom_reverse(input_list):
@@ -206,8 +220,7 @@ def custom_reverse(input_list):
         True
 
     """
-
-    pass
+    input_list[:] = input_list[::-1]
 
 
 def custom_contains(input_list, value):
@@ -226,8 +239,15 @@ def custom_contains(input_list, value):
         True
 
     """
+    # create False variable
+    # run for loop until you reach value
+    # if value reached, change variable to be True
 
-    return None
+    is_in_list = False
+    for i in input_list:
+        if i == value:
+            is_in_list = True
+    return is_in_list
 
 
 def custom_equality(some_list, another_list):
@@ -245,6 +265,25 @@ def custom_equality(some_list, another_list):
         False
 
     """
+    # do a for loop to go over each item
+    # if any of index items are not the same, break
+    # return false, outside of the loop, we return True
+
+    len_some_list = custom_len(some_list)
+    len_another_list = custom_len(another_list)
+
+    if len_some_list != len_another_list:
+        return False
+
+    for i in range(len_some_list - 1):
+        if some_list[i] != another_list[i]:
+            return False
+
+    return True
+
+
+
+
 
 
 
